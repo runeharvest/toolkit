@@ -1,0 +1,32 @@
+FILE(GLOB OBJECT_VIEWER_WIDGET_SRC *.cpp *.h)
+SET(OBJECT_VIEWER_WIDGET_HDR object_viewer_widget.h)
+
+IF(NOT WITH_RYZOM_SERVER)
+	QT5_WRAP_CPP(OBJECT_VIEWER_WIDGET_MOC_SRCS ${OBJECT_VIEWER_WIDGET_HDR})
+ENDIF()
+
+SOURCE_GROUP(QtGeneratedMocSrc FILES ${OBJECT_VIEWER_WIDGET_MOC_SRCS})
+
+ADD_LIBRARY(object_viewer_widget_qt MODULE
+		${OBJECT_VIEWER_WIDGET_SRC}
+		${OBJECT_VIEWER_WIDGET_MOC_SRCS})
+
+TARGET_INCLUDE_DIRECTORIES(object_viewer_widget_qt
+		PUBLIC
+		${CMAKE_CURRENT_BINARY_DIR}
+		${CMAKE_CURRENT_SOURCE_DIR}
+		${NEL_INCLUDE_DIR})
+
+TARGET_LINK_LIBRARIES(object_viewer_widget_qt
+		nelmisc
+		nel3d
+		${QT_LIBRARIES})
+
+NL_DEFAULT_PROPS(object_viewer_widget_qt "NeL, Tools, 3D: Object Viewer Qt Widget")
+NL_ADD_RUNTIME_FLAGS(object_viewer_widget_qt)
+
+IF(WITH_PCH)
+  target_precompile_headers(object_viewer_widget_qt PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/stdpch.h)
+ENDIF()
+
+#INSTALL(TARGETS object_viewer_widget_qt RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT runtime)
