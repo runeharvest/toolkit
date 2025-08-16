@@ -150,37 +150,7 @@ Thumbs.db
 .SyncIgnore
 .SyncArchive
 
-# build
-nel/build/*
-nelns/build/*
-snowballs/build/*
-ryzom/build/*
-build/*
-build-2010/*
-install/*
-build_*
-install_*
-nel/tools/build_gamedata/configuration/buildsite.py
-cmake-build-*
-
-
-# WebTT temp dir
-ryzom/tools/server/www/webtt/app/tmp
-
-# AMS ignore
-web/public_php/ams/is_installed
-web/docs/ams/html
-web/public_php/ams/templates_c
-ryzom/tools/server/ryzom_ams/drupal
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/autoload
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/configs
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/cron
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/img
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/plugins
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/smarty
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/translations
-ryzom/tools/server/ryzom_ams/drupal_module/ryzommanage/ams_lib/libinclude.php
-ryzom/tools/server/ryzom_ams/old
+/build/
 
 
 

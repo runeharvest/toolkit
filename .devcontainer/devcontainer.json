@@ -1,8 +1,7 @@
 {
   "name": "toolkit",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  // image is hosted at https://github.com/runeharvest/docker
+  "image": "runeharvest/vscode-dev:latest",
   "containerUser": "vscode",
   "customizations": {
     "vscode": {

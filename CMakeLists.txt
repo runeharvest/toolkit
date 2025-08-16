@@ -6,6 +6,10 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.22)
 
+SET(CMAKE_CXX_STANDARD 23)
+SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+SET(CMAKE_CXX_EXTENSIONS OFF)
+
 #-----------------------------------------------------------------------------
 # Load some macros.
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMakeModules")
@@ -25,10 +29,6 @@ IF(COMMAND cmake_policy)
     cmake_policy(SET CMP0048 NEW)
   ENDIF ()
 ENDIF()
-
-
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/shared/nel/include)
-ADD_SUBDIRECTORY(shared/nel)
 
 
 INCLUDE(nel)
@@ -355,46 +355,18 @@ ELSE()
   INCLUDE_DIRECTORIES(${NEL_INCLUDE_DIRS})
 ENDIF()
 
-FIND_PACKAGE(MySQL)
-
 ADD_SUBDIRECTORY(shared)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/shared)
 
-
+ADD_SUBDIRECTORY(3d)
+ADD_SUBDIRECTORY(georges)
+ADD_SUBDIRECTORY(ligo)
+ADD_SUBDIRECTORY(logic)
+ADD_SUBDIRECTORY(memory)
 ADD_SUBDIRECTORY(misc)
+ADD_SUBDIRECTORY(pacs)
+ADD_SUBDIRECTORY(sound)
 
-IF(WITH_NEL_TOOLS)
-  ADD_SUBDIRECTORY(memory)
-ENDIF()
-
-# Max plugins are under the 3d directory as well.
-# Allow to compile only max plugins without other tools.
-IF(WITH_NEL_TOOLS OR WITH_NEL_MAXPLUGIN)
-  ADD_SUBDIRECTORY(3d)
-ENDIF()
-
-# Don't add other subdirectories if only max plugins are selected.
-IF(WITH_NEL_TOOLS)
-  IF(WITH_PACS)
-    ADD_SUBDIRECTORY(pacs)
-  ENDIF()
-  
-  IF(WITH_LIGO)
-    ADD_SUBDIRECTORY(ligo)
-  ENDIF()
-  
-  IF(WITH_LOGIC)
-    ADD_SUBDIRECTORY(logic)
-  ENDIF()
-  
-  IF(WITH_GEORGES)
-    ADD_SUBDIRECTORY(georges)
-  ENDIF()
-  
-  IF(WITH_SOUND)
-    ADD_SUBDIRECTORY(sound)
-  ENDIF()
-ENDIF()
 
 # packaging information
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Ryzom Core MMORPG Framework")
