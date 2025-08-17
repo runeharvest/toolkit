@@ -8,4 +8,8 @@ ADD_EXECUTABLE(message_box WIN32 ${SRC})
 NL_DEFAULT_PROPS(message_box "NeL, Tools, Misc: message_box")
 NL_ADD_RUNTIME_FLAGS(message_box)
 
+SET_TARGET_PROPERTIES(message_box PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS message_box RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)

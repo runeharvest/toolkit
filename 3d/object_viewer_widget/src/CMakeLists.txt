@@ -29,4 +29,8 @@ IF(WITH_PCH)
   target_precompile_headers(object_viewer_widget_qt PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/stdpch.h)
 ENDIF()
 
-#INSTALL(TARGETS object_viewer_widget_qt RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT runtime)
+#SET_TARGET_PROPERTIES(object_viewer_widget_qt PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
+INSTALL(TARGETS object_viewer_widget_qt RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT runtime)

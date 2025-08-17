@@ -8,4 +8,8 @@ ADD_EXECUTABLE(multi_cd_setup_fix WIN32 ${SRC})
 NL_DEFAULT_PROPS(multi_cd_setup_fix "NeL, Tools, Misc: multi_cd_setup_fix")
 NL_ADD_RUNTIME_FLAGS(multi_cd_setup_fix)
 
+SET_TARGET_PROPERTIES(multi_cd_setup_fix PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS multi_cd_setup_fix RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)

@@ -12,4 +12,8 @@ IF(WITH_PCH)
   target_precompile_headers(logic_editor PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/StdAfx.h)
 ENDIF()
 
+SET_TARGET_PROPERTIES(logic_editor PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS logic_editor RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)

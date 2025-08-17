@@ -10,5 +10,9 @@ TARGET_LINK_LIBRARIES(build_ig_boxes nelmisc nelpacs nel3d)
 NL_DEFAULT_PROPS(build_ig_boxes "NeL, Tools, PACS: build_ig_boxes")
 NL_ADD_RUNTIME_FLAGS(build_ig_boxes)
 
+SET_TARGET_PROPERTIES(build_ig_boxes PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS build_ig_boxes RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolspacs)
 INSTALL(FILES build_ig_boxes.cfg DESTINATION ${NL_ETC_PREFIX} COMPONENT toolspacs)

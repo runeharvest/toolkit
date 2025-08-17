@@ -6,4 +6,8 @@ TARGET_LINK_LIBRARIES(zone_check_bind nel3d nelmisc)
 NL_DEFAULT_PROPS(zone_check_bind "NeL, Tools, 3D: zone_check_bind")
 NL_ADD_RUNTIME_FLAGS(zone_check_bind)
 
+SET_TARGET_PROPERTIES(zone_check_bind PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS zone_check_bind RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

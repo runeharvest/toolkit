@@ -39,5 +39,8 @@ TARGET_LINK_LIBRARIES(pipeline_max_dump
 NL_DEFAULT_PROPS(pipeline_max_dump "NeL, Tools, 3D: Pipeline Max Dump (Temporary Tool)")
 NL_ADD_RUNTIME_FLAGS(pipeline_max_dump)
 
-INSTALL(TARGETS pipeline_max_dump RUNTIME DESTINATION bin COMPONENT toolsmisc)
+SET_TARGET_PROPERTIES(pipeline_max_dump PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
 
+INSTALL(TARGETS pipeline_max_dump RUNTIME DESTINATION bin COMPONENT toolsmisc)

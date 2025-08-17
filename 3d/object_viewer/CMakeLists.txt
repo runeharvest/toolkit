@@ -4,13 +4,13 @@ SOURCE_GROUP("" FILES ${SRC})
 
 ADD_LIBRARY(object_viewer_dll SHARED ${SRC})
 
-TARGET_LINK_LIBRARIES(object_viewer_dll 
+TARGET_LINK_LIBRARIES(object_viewer_dll
 							nelmisc
 							nel3d
 							nelsound
 							nelsnd_lowlevel
 							Version.lib)
-							
+
 NL_DEFAULT_PROPS(object_viewer_dll "NeL, Tools, 3D: Object Viewer DLL")
 NL_ADD_RUNTIME_FLAGS(object_viewer_dll)
 NL_ADD_LIB_SUFFIX(object_viewer_dll)
@@ -24,6 +24,10 @@ ENDIF()
 INSTALL(TARGETS object_viewer_dll LIBRARY DESTINATION ${NL_LIB_PREFIX} RUNTIME DESTINATION ${NL_BIN_PREFIX} ARCHIVE DESTINATION ${NL_LIB_PREFIX} COMPONENT tools3d)
 INSTALL(FILES object_viewer.cfg DESTINATION ${NL_ETC_PREFIX} COMPONENT tools3d)
 IF(WITH_MAXPLUGIN)
-  INSTALL(TARGETS object_viewer_dll RUNTIME DESTINATION maxplugin COMPONENT tools3d)
+  SET_TARGET_PROPERTIES(object_viewer_dll PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
+INSTALL(TARGETS object_viewer_dll RUNTIME DESTINATION maxplugin COMPONENT tools3d)
   INSTALL(FILES object_viewer.cfg DESTINATION maxplugin COMPONENT tools3d)
 ENDIF()

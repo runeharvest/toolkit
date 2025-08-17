@@ -8,4 +8,8 @@ TARGET_LINK_LIBRARIES(zone_elevation nel3d nelmisc nelligo)
 NL_DEFAULT_PROPS(zone_elevation "NeL, Tools, 3D: Zone Elevation")
 NL_ADD_RUNTIME_FLAGS(zone_elevation)
 
+SET_TARGET_PROPERTIES(zone_elevation PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS zone_elevation RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

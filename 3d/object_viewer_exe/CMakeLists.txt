@@ -7,8 +7,8 @@ ADD_DEFINITIONS(${MFC_DEFINITIONS})
 SET(CMAKE_MFC_FLAG 2)
 ADD_EXECUTABLE(object_viewer WIN32 ${SRC})
 
-TARGET_LINK_LIBRARIES(	object_viewer 
-						nelmisc 
+TARGET_LINK_LIBRARIES(	object_viewer
+						nelmisc
 						nel3d
 						nelsound
 						nelsnd_lowlevel
@@ -21,7 +21,15 @@ IF(WITH_PCH)
   target_precompile_headers(object_viewer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/std_afx.h)
 ENDIF()
 
+SET_TARGET_PROPERTIES(object_viewer PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS object_viewer RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)
 IF(WITH_MAXPLUGIN)
-  INSTALL(TARGETS object_viewer RUNTIME DESTINATION maxplugin COMPONENT tools3d)
+  SET_TARGET_PROPERTIES(object_viewer PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
+INSTALL(TARGETS object_viewer RUNTIME DESTINATION maxplugin COMPONENT tools3d)
 ENDIF()

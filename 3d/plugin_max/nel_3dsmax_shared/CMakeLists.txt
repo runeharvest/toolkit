@@ -5,14 +5,14 @@ SOURCE_GROUP("" FILES ${SRC})
 ADD_LIBRARY(nel_3dsmax_shared SHARED ${SRC})
 
 INCLUDE_DIRECTORIES(${MAXSDK_INCLUDE_DIR})
-TARGET_LINK_LIBRARIES(nel_3dsmax_shared 
+TARGET_LINK_LIBRARIES(nel_3dsmax_shared
 							nelmisc
 							nel3d
-							nel_mesh_lib 
-							nel_patch_lib 
-							${MAXSDK_LIBRARIES} 
+							nel_mesh_lib
+							nel_patch_lib
+							${MAXSDK_LIBRARIES}
 							Version.lib)
-							
+
 NL_DEFAULT_PROPS(nel_3dsmax_shared "MAX Plugin: NeL 3ds Max Shared")
 NL_ADD_RUNTIME_FLAGS(nel_3dsmax_shared)
 NL_ADD_LIB_SUFFIX(nel_3dsmax_shared)
@@ -23,5 +23,9 @@ ADD_DEFINITIONS(-DNEL_3DSMAX_SHARED_EXPORTS ${MAXSDK_DEFINITIONS})
 IF(WITH_PCH)
   target_precompile_headers(nel_3dsmax_shared PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/StdAfx.h)
 ENDIF()
+
+SET_TARGET_PROPERTIES(nel_3dsmax_shared PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
 
 INSTALL(TARGETS nel_3dsmax_shared RUNTIME DESTINATION maxplugin/plugins LIBRARY DESTINATION ${NL_LIB_PREFIX} ARCHIVE DESTINATION ${NL_LIB_PREFIX} COMPONENT libraries)

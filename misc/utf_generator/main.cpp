@@ -380,7 +380,7 @@ int main(int argc, char **argv)
 	for (u32char i = 0; i < 0x110000; ++i)
 	{
 		if (ci[i] != lower[i])
-			std::cout << i << std::endl;
+			std::cout << static_cast<uint32_t>(i) << std::endl;
 	}
 
 	generateMap("string_to_upper", "StringToUpper", upper);

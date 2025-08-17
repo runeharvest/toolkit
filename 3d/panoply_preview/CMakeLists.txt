@@ -38,4 +38,8 @@ TARGET_LINK_LIBRARIES(nl_panoply_preview
 NL_DEFAULT_PROPS(nl_panoply_preview "NeL, Tools, 3D: panoply_preview")
 NL_ADD_RUNTIME_FLAGS(nl_panoply_preview)
 
+SET_TARGET_PROPERTIES(nl_panoply_preview PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS nl_panoply_preview RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT samples3d)

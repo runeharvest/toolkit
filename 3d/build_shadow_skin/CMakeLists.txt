@@ -8,4 +8,9 @@ TARGET_LINK_LIBRARIES(build_shadow_skin nelmisc nel3d)
 NL_DEFAULT_PROPS(build_shadow_skin "NeL, Tools, 3D: build_shadow_skin")
 NL_ADD_RUNTIME_FLAGS(build_shadow_skin)
 
+
+SET_TARGET_PROPERTIES(build_shadow_skin PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS build_shadow_skin RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

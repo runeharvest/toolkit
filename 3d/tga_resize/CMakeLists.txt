@@ -6,4 +6,8 @@ TARGET_LINK_LIBRARIES(tga_resize nelmisc)
 NL_DEFAULT_PROPS(tga_resize "NeL, Tools, 3D: tga_resize")
 NL_ADD_RUNTIME_FLAGS(tga_resize)
 
+SET_TARGET_PROPERTIES(tga_resize PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS tga_resize RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

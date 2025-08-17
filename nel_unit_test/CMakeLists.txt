@@ -15,6 +15,10 @@ target_compile_definitions(nel_unit_test
         NEL_UNIT_BASE="${PROJECT_SOURCE_DIR}/tools/nel_unit_test/"
 )
 
+SET_TARGET_PROPERTIES(nel_unit_test PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS nel_unit_test RUNTIME DESTINATION ${NL_BIN_PREFIX})
 
 

@@ -8,4 +8,9 @@ TARGET_LINK_LIBRARIES(cluster_viewer nel3d nelmisc)
 NL_DEFAULT_PROPS(cluster_viewer "NeL, Tools, 3D: Cluster Viewer")
 NL_ADD_RUNTIME_FLAGS(cluster_viewer)
 
+
+SET_TARGET_PROPERTIES(cluster_viewer PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS cluster_viewer RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

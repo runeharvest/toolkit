@@ -49,4 +49,8 @@ TARGET_LINK_LIBRARIES(crash_report ${QT_LIBRARIES})
 NL_DEFAULT_PROPS(crash_report "NeL, Tools, Misc: Crash Report")
 NL_ADD_RUNTIME_FLAGS(crash_report)
 
+SET_TARGET_PROPERTIES(crash_report PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS crash_report RUNTIME DESTINATION ${NL_BIN_PREFIX})

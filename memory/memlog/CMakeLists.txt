@@ -1,9 +1,13 @@
 FILE(GLOB SRC *.cpp *.h)
-		
+
 ADD_EXECUTABLE(memlog ${SRC})
 
 TARGET_LINK_LIBRARIES(memlog nelmisc)
 NL_DEFAULT_PROPS(memlog "NeL, Tools, Memory: memlog")
 NL_ADD_RUNTIME_FLAGS(memlog)
+
+SET_TARGET_PROPERTIES(memlog PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
 
 INSTALL(TARGETS memlog RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)

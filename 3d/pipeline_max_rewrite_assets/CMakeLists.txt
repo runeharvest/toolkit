@@ -39,5 +39,8 @@ TARGET_LINK_LIBRARIES(pipeline_max_rewrite_assets
 NL_DEFAULT_PROPS(pipeline_max_dump "NeL, Tools, 3D: Pipeline Max Rewrite Assets")
 NL_ADD_RUNTIME_FLAGS(pipeline_max_rewrite_assets)
 
-INSTALL(TARGETS pipeline_max_rewrite_assets RUNTIME DESTINATION bin COMPONENT toolsmisc)
+SET_TARGET_PROPERTIES(pipeline_max_rewrite_assets PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
 
+INSTALL(TARGETS pipeline_max_rewrite_assets RUNTIME DESTINATION bin COMPONENT toolsmisc)

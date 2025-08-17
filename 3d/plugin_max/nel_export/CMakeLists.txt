@@ -9,14 +9,14 @@ ADD_LIBRARY(nel_export SHARED ${SRC} nel_export.rc)
 INCLUDE_DIRECTORIES(${MAXSDK_INCLUDE_DIR})
 
 TARGET_LINK_LIBRARIES(nel_export
-							nelmisc 
+							nelmisc
 							nelpacs
 							nel3d
-							nel_mesh_lib 
+							nel_mesh_lib
 							nel_patch_lib
-							nel_3dsmax_shared 
-							object_viewer_dll 
-							${MAXSDK_LIBRARIES} 
+							nel_3dsmax_shared
+							object_viewer_dll
+							${MAXSDK_LIBRARIES}
 							Version.lib
 							comctl32.lib)
 
@@ -30,5 +30,9 @@ ADD_DEFINITIONS(${MAXSDK_DEFINITIONS})
 IF(WITH_PCH)
   target_precompile_headers(nel_export PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/std_afx.h)
 ENDIF()
+
+SET_TARGET_PROPERTIES(nel_export PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
 
 INSTALL(TARGETS nel_export RUNTIME DESTINATION maxplugin/plugins LIBRARY DESTINATION ${NL_LIB_PREFIX} ARCHIVE DESTINATION ${NL_LIB_PREFIX} COMPONENT libraries)

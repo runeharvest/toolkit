@@ -8,4 +8,9 @@ TARGET_LINK_LIBRARIES(hls_bank_maker s3tc_compressor nelmisc nel3d)
 NL_DEFAULT_PROPS(hls_bank_maker "NeL, Tools, 3D: hls_bank_maker")
 NL_ADD_RUNTIME_FLAGS(hls_bank_maker)
 
+
+SET_TARGET_PROPERTIES(hls_bank_maker PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS hls_bank_maker RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

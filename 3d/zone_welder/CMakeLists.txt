@@ -8,4 +8,8 @@ TARGET_LINK_LIBRARIES(zone_welder nel3d nelmisc)
 NL_DEFAULT_PROPS(zone_welder "NeL, Tools, 3D: zone_welder")
 NL_ADD_RUNTIME_FLAGS(zone_welder)
 
+SET_TARGET_PROPERTIES(zone_welder PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS zone_welder RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

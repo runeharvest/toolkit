@@ -10,5 +10,9 @@ TARGET_LINK_LIBRARIES(make_sheet_id nelmisc)
 NL_DEFAULT_PROPS(make_sheet_id "NeL, Tools, Misc: make_sheet_id")
 NL_ADD_RUNTIME_FLAGS(make_sheet_id)
 
+SET_TARGET_PROPERTIES(make_sheet_id PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS make_sheet_id RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)
 INSTALL(FILES make_sheet_id.cfg DESTINATION ${NL_ETC_PREFIX} COMPONENT toolsmisc)

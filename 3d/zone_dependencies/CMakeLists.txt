@@ -8,4 +8,8 @@ TARGET_LINK_LIBRARIES(zone_dependencies nel3d nelgeorges nelmisc)
 NL_DEFAULT_PROPS(zone_dependencies "NeL, Tools, 3D: zone_dependencies")
 NL_ADD_RUNTIME_FLAGS(zone_dependencies)
 
+SET_TARGET_PROPERTIES(zone_dependencies PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS zone_dependencies RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

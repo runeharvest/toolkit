@@ -8,4 +8,8 @@ TARGET_LINK_LIBRARIES(nl_utf_generator nelmisc)
 NL_DEFAULT_PROPS(nl_utf_generator "NeL, Tools, Misc: UTF Generator")
 NL_ADD_RUNTIME_FLAGS(nl_utf_generator)
 
+SET_TARGET_PROPERTIES(nl_utf_generator PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS nl_utf_generator RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)

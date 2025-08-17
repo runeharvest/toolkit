@@ -6,4 +6,8 @@ TARGET_LINK_LIBRARIES(disp_sheet_id nelmisc)
 NL_DEFAULT_PROPS(disp_sheet_id "NeL, Tools, Misc: disp_sheet_id")
 NL_ADD_RUNTIME_FLAGS(disp_sheet_id)
 
+SET_TARGET_PROPERTIES(disp_sheet_id PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS disp_sheet_id RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)

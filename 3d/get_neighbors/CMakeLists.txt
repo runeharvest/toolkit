@@ -8,4 +8,9 @@ TARGET_LINK_LIBRARIES(get_neighbors nelmisc)
 NL_DEFAULT_PROPS(get_neighbors "NeL, Tools, 3D: get_neighbors")
 NL_ADD_RUNTIME_FLAGS(get_neighbors)
 
+
+SET_TARGET_PROPERTIES(get_neighbors PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS get_neighbors RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT tools3d)

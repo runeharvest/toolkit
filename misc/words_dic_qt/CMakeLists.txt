@@ -36,5 +36,9 @@ TARGET_LINK_LIBRARIES(words_dic_qt ${QT_LIBRARIES} nelmisc)
 NL_DEFAULT_PROPS(words_dic_qt "NeL, Tools, Misc: Qt Words Dic")
 NL_ADD_RUNTIME_FLAGS(words_dic_qt)
 
+SET_TARGET_PROPERTIES(words_dic_qt PROPERTIES
+  INSTALL_RPATH "$ORIGIN/lib:$ORIGIN/../lib"
+  BUILD_RPATH   "$ORIGIN/lib:$ORIGIN/../lib")
+
 INSTALL(TARGETS words_dic_qt RUNTIME DESTINATION ${NL_BIN_PREFIX} COMPONENT toolsmisc)
 INSTALL(FILES words_dic.cfg DESTINATION ${NL_ETC_PREFIX} COMPONENT toolsmisc)
